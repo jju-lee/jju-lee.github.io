@@ -18,35 +18,6 @@
   <!-- custom card grid styles -->
   <link href="./custom.css" rel="stylesheet">
 
-  <!-- 추가 오버라이드: 폰트 크기 및 subtitle 코드 박스 스타일 -->
-  <style>
-    /* 카드 텍스트 기본 폰트 크기 키우기 */
-    .work-card-body {
-      font-size: 1rem;
-    }
-    /* 제목 (h3) 크기 조정 */
-    .work-card-body h3 {
-      font-size: 14px;
-      margin-bottom: 0.5rem;
-    }
-    /* subtitle(code 박스) */
-    .work-subtitle code {
-      display: inline-block;
-      background: #f0f0f0;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-family: 'Roboto Mono', monospace;
-      font-size: 11px;
-      color: #000;
-      margin-bottom: 0.75rem;
-    }
-    /* 설명 텍스트 */
-    .work-card-body p {
-      font-size: 11px;
-      color: #000;
-      margin-bottom: 1rem;
-    }
-  </style>
 </head>
 
 <body>
@@ -74,7 +45,6 @@
             <li><a href="./index.html">Home</a></li>
             <li class="active"><a href="./works.html">Works</a></li>
             <li><a href="./about.html">About</a></li>
-            <li><a href="./contact.html">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -82,120 +52,65 @@
   </header>
 
   <!-- works section -->
-  <div class="section-container">
+  <div class="section-container works-page">
     <div class="container">
-
-      <!-- section header -->
-      <div class="row section-header text-center">
-        <div class="col-sm-8 col-sm-offset-2 section-container-spacer">
+      <div class="works-simple">
+        <div class="works-simple-header">
           <h1 class="h2">Works</h1>
-          <p>경험한 프로덕트들을 기록합니다.</p>
+          <p>핵심 역할과 성과 중심으로 정리한 프로젝트 리스트입니다.</p>
         </div>
       </div>
 
-      <!-- card grid -->
-      <div class="row works-grid">
-        <!-- Card 1 -->
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="work-card">
-            <div class="work-card-img">
-              <a href="./returnit-wms.html">
-                <img src="./assets/images/works-hover01.jpg"
-                     alt="returnit-wms" class="img-responsive">
-              </a>
-            </div>
-            <div class="work-card-body">
-              <h3>Returnit - 인벤토리(WMS) 어드민</h3>
-              <div class="work-subtitle">
-                <code>Product Manager</code>
-              </div>
-              <p>description</p>
-              <a href="./returnit-wms.html" class="btn btn-default">Details</a>
-            </div>
+      <div class="works-simple-list">
+        <a class="work-simple-item" href="./returnit-orders.html">
+          <div class="work-simple-text">
+            <p class="work-simple-role">Product Manager</p>
+            <h3 class="work-simple-title">Returnit 주문/반납 어드민 및 유저웹</h3>
+            <p class="work-simple-desc">유저 여정과 운영 프로세스를 함께 개선해 전환을 높인 프로젝트.</p>
+            <p class="work-simple-tags">Funnel · UX · Admin</p>
           </div>
-        </div>
+          <div class="work-simple-media"></div>
+        </a>
 
-        <!-- Card 2 -->
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="work-card">
-            <div class="work-card-img">
-              <a href="./returnit-orders.html">
-                <img src="./assets/images/works-hover02.jpg"
-                     alt="returnit-orders" class="img-responsive">
-              </a>
-            </div>
-            <div class="work-card-body">
-              <h3>Returnit - 주문/반납 어드민 및 유저웹</h3>
-              <div class="work-subtitle">
-                <code>Product Manager</code>
-              </div>
-              <p>description</p>
-              <a href="./returnit-orders.html" class="btn btn-default">Details</a>
-            </div>
+        <a class="work-simple-item" href="./returnit-wms.html">
+          <div class="work-simple-text">
+            <p class="work-simple-role">Product Manager</p>
+            <h3 class="work-simple-title">Returnit 인벤토리(WMS) 어드민</h3>
+            <p class="work-simple-desc">물류 운영 효율과 재고 가시성을 개선한 내부 도구 리뉴얼.</p>
+            <p class="work-simple-tags">Inventory · Ops · Dashboard</p>
           </div>
-        </div>
+          <div class="work-simple-media"></div>
+        </a>
 
-        <!-- Card 3 -->
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="work-card">
-            <div class="work-card-img">
-              <a href="./returnit-prm.html">
-                <img src="./assets/images/works-hover03.jpg"
-                     alt="returnit-prm" class="img-responsive">
-              </a>
-            </div>
-            <div class="work-card-body">
-              <h3>Returnit - 가게관리(PRM) 어드민</h3>
-              <div class="work-subtitle">
-                <code>Product Manager</code>
-              </div>
-              <p>description</p>
-              <a href="./returnit-prml.html" class="btn btn-default">Details</a>
-            </div>
+        <a class="work-simple-item" href="./returnit-prm.html">
+          <div class="work-simple-text">
+            <p class="work-simple-role">Product Manager</p>
+            <h3 class="work-simple-title">Returnit 가게관리(PRM) 어드민</h3>
+            <p class="work-simple-desc">파트너 운영 효율을 높이는 가게 관리 기능 확장.</p>
+            <p class="work-simple-tags">Partners · CRM · Workflow</p>
           </div>
-        </div>
+          <div class="work-simple-media"></div>
+        </a>
 
-        <!-- Card 4 -->
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="work-card">
-            <div class="work-card-img">
-              <a href="./doctornow-f2f.html">
-                <img src="./assets/images/works-hover04.jpg"
-                     alt="doctornow-f2f" class="img-responsive">
-              </a>
-            </div>
-            <div class="work-card-body">
-              <h3>Doctornow - 대면예약 서비스</h3>
-              <div class="work-subtitle">
-                <code>Data Analyst</code>
-              </div>
-              <p>description</p>
-              <a href="./doctornow-f2f.html" class="btn btn-default">Details</a>
-            </div>
+        <a class="work-simple-item" href="./doctornow-f2f.html">
+          <div class="work-simple-text">
+            <p class="work-simple-role">Data Analyst</p>
+            <h3 class="work-simple-title">Doctornow 대면예약 서비스</h3>
+            <p class="work-simple-desc">예약 흐름 데이터 기반으로 대면 진료 전환율을 개선.</p>
+            <p class="work-simple-tags">Analytics · Healthcare · Conversion</p>
           </div>
-        </div>
+          <div class="work-simple-media"></div>
+        </a>
 
-        <!-- Card 5 -->
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="work-card">
-            <div class="work-card-img">
-              <a href="./doctornow-core.html">
-                <img src="./assets/images/works-hover05.jpg"
-                     alt="doctornow-core" class="img-responsive">
-              </a>
-            </div>
-            <div class="work-card-body">
-              <h3>Doctornow - 비대면진료 및 약배송 서비스</h3>
-              <div class="work-subtitle">
-                <code>Business Analyst, Business Management</code>
-              </div>
-              <p>description</p>
-              <a href="./doctornow-core.html" class="btn btn-default">Details</a>
-            </div>
+        <a class="work-simple-item" href="./doctornow-core.html">
+          <div class="work-simple-text">
+            <p class="work-simple-role">Business Analyst · Business Management</p>
+            <h3 class="work-simple-title">Doctornow 비대면진료 및 약배송</h3>
+            <p class="work-simple-desc">핵심 서비스 구조 개선과 지표 모니터링 체계 구축.</p>
+            <p class="work-simple-tags">Strategy · Operations · Delivery</p>
           </div>
-        </div>
-
-        <!-- 필요에 따라 카드 복제 추가 -->
+          <div class="work-simple-media"></div>
+        </a>
       </div>
     </div>
   </div>
