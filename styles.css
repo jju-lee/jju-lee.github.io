@@ -34,10 +34,13 @@ body.minimal nav a:hover,
 body.minimal nav a:focus,
 body.minimal nav a.active {
   color: #ffffff;
+  font-weight: 700;
 }
 
 body.minimal .hero-full-container {
   height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 body.minimal .hero-full-container h1 {
@@ -55,6 +58,7 @@ body.minimal .hero-full-wrapper {
 body.minimal .hero-full-wrapper .text-content {
   display: table-cell;
   vertical-align: middle;
+  transform: translateY(-48px);
 }
 
 body.minimal .white-text-container h1,
@@ -104,6 +108,8 @@ body.minimal .hero-full-container .col-xs-12 {
 .page {
   max-width: 860px;
   margin: 0 auto;
+  position: relative;
+  z-index: 5;
 }
 
 nav {
@@ -112,6 +118,8 @@ nav {
   margin-bottom: 32px;
   font-size: 14px;
   letter-spacing: 0.08em;
+  position: relative;
+  z-index: 10;
 }
 
 nav a {
@@ -128,6 +136,7 @@ nav a:focus {
 
 nav a.active {
   color: var(--ink);
+  font-weight: 700;
 }
 
 h1, h2 {
