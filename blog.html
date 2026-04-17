@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Jusung Lee</title>
+  <link rel="icon" type="image/png" href="avatar.png" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    /* ── Reset & Base ── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-border: #e8e8e4;
+      --color-text: #000000;
+      --color-muted: #000000;
+      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w: 720px;
+      --section-gap: 96px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .nav-divider {
+      font-size: 14px;
+      color: var(--color-border);
+      user-select: none;
+    }
+
+    /* ── Blog Header ── */
+    .blog-header {
+      padding-top: calc(var(--section-gap) + 56px);
+      padding-bottom: 48px;
+    }
+
+    .section-label {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .blog-header-desc {
+      font-size: 15px;
+      color: #666;
+    }
+
+    /* ── Tag Filter ── */
+    .tag-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 24px 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 0;
+    }
+
+    .tag-btn {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      color: #555;
+      background-color: #f0f0f0;
+      border: none;
+      border-radius: 4px;
+      padding: 3px 10px;
+      cursor: pointer;
+      transition: background-color 0.15s, color 0.15s;
+      font-family: var(--font);
+    }
+
+    .tag-btn:hover,
+    .tag-btn.active {
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* ── Post List ── */
+    .post-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .post-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--color-border);
+      text-decoration: none;
+      color: var(--color-text);
+      transition: opacity 0.2s;
+    }
+
+    .post-item:hover {
+      opacity: 0.6;
+    }
+
+    .post-date {
+      font-size: 13px;
+      color: #888;
+      padding-top: 3px;
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+
+    .post-body {}
+
+    .post-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .post-excerpt {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .post-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #555;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--color-border);
+      margin-top: 96px;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .footer-back {
+      font-size: 13px;
+      color: #888;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-back:hover {
+      color: var(--color-text);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      :root {
+        --section-gap: 64px;
+      }
+
+      .post-item {
+        grid-template-columns: 1fr;
+        gap: 6px 0;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      footer .container {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a class="nav-logo" href="index.html">
+        <img src="avatar.png" alt="이주성" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li class="nav-divider">|</li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Blog Header -->
+  <div class="blog-header">
+    <div class="container">
+      <p class="section-label">Blog</p>
+      <p class="blog-header-desc">프로덕트, 운영, 데이터에 대해 생각하고 기록합니다.</p>
+    </div>
+  </div>
+
+  <!-- Tag Filter -->
+  <div class="container">
+    <div class="tag-filter" id="tagFilter">
+      <button class="tag-btn active" data-tag="all">All</button>
+      <button class="tag-btn" data-tag="Product">Product</button>
+      <button class="tag-btn" data-tag="Data">Data</button>
+      <button class="tag-btn" data-tag="Operations">Operations</button>
+    </div>
+  </div>
+
+  <!-- Post List -->
+  <div class="container">
+    <div class="post-list" id="postList">
+
+      <a class="post-item" href="blog/inventory.html" data-tags="Product,Data,Operations">
+        <span class="post-date">2026.04.17</span>
+        <div class="post-body">
+          <p class="post-title">인벤토리 시스템을 기획하며 배운 것들</p>
+          <p class="post-excerpt">RFID/QR 기반 인벤토리 시스템을 초기 설계하면서 겪은 시행착오와 인사이트를 정리했습니다.</p>
+          <div class="post-tags">
+            <span class="post-tag">Product</span>
+            <span class="post-tag">Data</span>
+            <span class="post-tag">Operations</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <span class="footer-copy">Copyright 2026. Jusung Lee all rights reserved.</span>
+      <a class="footer-back" href="index.html">← 돌아가기</a>
+    </div>
+  </footer>
+
+  <script>
+    const tagBtns = document.querySelectorAll('.tag-btn');
+    const postItems = document.querySelectorAll('.post-item');
+
+    tagBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tagBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const selected = btn.dataset.tag;
+        postItems.forEach(item => {
+          const tags = item.dataset.tags ? item.dataset.tags.split(',') : [];
+          item.style.display = (selected === 'all' || tags.includes(selected)) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
