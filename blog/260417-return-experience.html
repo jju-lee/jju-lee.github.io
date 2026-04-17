@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회수 경험 고도화 — Jusung Lee</title>
+  <link rel="icon" type="image/png" href="../avatar.png" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-border: #e8e8e4;
+      --color-text: #000000;
+      --color-muted: #000000;
+      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w: 720px;
+      --section-gap: 96px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .nav-divider {
+      font-size: 14px;
+      color: var(--color-border);
+      user-select: none;
+    }
+
+    article {
+      padding-top: calc(var(--section-gap) + 56px);
+      padding-bottom: var(--section-gap);
+    }
+
+    .post-back {
+      display: inline-block;
+      font-size: 13px;
+      color: #888;
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: color 0.2s;
+    }
+
+    .post-back:hover {
+      color: var(--color-text);
+    }
+
+    .post-meta {
+      margin-bottom: 32px;
+    }
+
+    .post-date {
+      font-size: 13px;
+      color: #888;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 12px;
+    }
+
+    .post-title {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .post-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #555;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    .post-content {
+      border-top: 1px solid var(--color-border);
+      padding-top: 40px;
+    }
+
+    .post-content h2 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-top: 48px;
+      margin-bottom: 16px;
+    }
+
+    .post-content p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .post-content ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .post-content ul li {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #222;
+      display: flex;
+      gap: 10px;
+    }
+
+    .post-content ul li::before {
+      content: "–";
+      flex-shrink: 0;
+      color: #000;
+    }
+
+    .post-content blockquote {
+      border-left: 3px solid #000;
+      padding-left: 20px;
+      margin: 28px 0;
+      color: #555;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--color-border);
+      margin-top: 96px;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .footer-back {
+      font-size: 13px;
+      color: #888;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-back:hover {
+      color: var(--color-text);
+    }
+
+    @media (max-width: 600px) {
+      :root {
+        --section-gap: 64px;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      footer .container {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a class="nav-logo" href="../index.html">
+        <img src="../avatar.png" alt="이주성" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li class="nav-divider">|</li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <article>
+    <div class="container">
+
+      <a class="post-back" href="../blog.html">← 목록으로</a>
+
+      <div class="post-meta">
+        <p class="post-date">2026.04.17</p>
+        <h1 class="post-title">회수 경험 고도화 — 사용자가 느끼는 '불편함'을 데이터로 정의하는 법</h1>
+        <div class="post-tags">
+          <span class="post-tag">Product</span>
+          <span class="post-tag">Data</span>
+        </div>
+      </div>
+
+      <div class="post-content">
+
+        <blockquote>불편하다는 말은 많았지만, 어디가 불편한지는 아무도 몰랐다.</blockquote>
+
+        <p>회수 프로세스를 개선해달라는 요청은 꾸준히 들어왔습니다. CS 인입 건의 상당수가 회수 관련이었고, 만족도 조사에서도 회수 경험 점수는 항상 하위권이었습니다. 그런데 막상 데이터를 들여다보면
+          어디가 문제인지 특정하기가 어려웠습니다. 시스템엔 '완료' 상태만 찍혀 있었고, CS 로그엔 "회수가 늦었어요", "언제 오는지 모르겠어요"만 반복됐습니다.</p>
+
+        <h2>여정을 쪼개야 측정할 수 있다</h2>
+
+        <p>첫 번째로 한 일은 회수 여정을 단계별로 분해하는 것이었습니다. 하나의 '회수 완료' 이벤트 뒤에는 실제로 여러 단계가 있었습니다.</p>
+
+        <ul>
+          <li>회수 접수</li>
+          <li>기사 배정</li>
+          <li>방문 예정 알림 발송</li>
+          <li>실제 방문</li>
+          <li>수거 완료 처리</li>
+          <li>유저 웹 상태 업데이트</li>
+        </ul>
+
+        <p>각 단계에 시간 스탬프를 심고, 단계 간 소요 시간을 집계했습니다. 그제서야 병목이 보였습니다. 회수 지연은 실제로 존재했고, 특정 권역에서 집중적으로 발생하고 있었습니다. 기사 배정 이후 실제
+          방문까지의 소요 시간이 다른 권역 대비 두 배 이상이었습니다.</p>
+
+        <h2>문제 로케이션을 특정하고 나서야 해결할 수 있었다</h2>
+
+        <p>스탬프를 심기 전까지는 "회수가 늦다"는 피드백이 서비스 지역 전체적으로 고르게 발생하는 문제처럼 보였습니다. 하지만 데이터를 권역별로 쪼개자 문제가 집중된 구역이 명확하게 드러났습니다. 해당
+          권역의 배정 로직과 기사 운영 방식을 조정하면서 평균 회수 소요 시간이 줄었고, 관련 CS 인입도 40% 감소했습니다.</p>
+
+        <p>측정할 수 없으면 개선할 수 없습니다. '불편하다'는 피드백은 방향이지, 목적지가 아닙니다. 어디서 얼마나 느린지를 특정하고 나서야 실질적인 해결이 가능했습니다.</p>
+
+      </div>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="container">
+      <span class="footer-copy">Copyright 2026. Jusung Lee all rights reserved.</span>
+      <a class="footer-back" href="../blog.html">← 목록으로</a>
+    </div>
+  </footer>
+
+</body>
+
+</html>
