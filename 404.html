@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Jusung Lee</title>
+  <link rel="icon" type="image/png" href="avatar.png" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: #ffffff;
+      color: #000000;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .code {
+      font-size: clamp(80px, 20vw, 160px);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      animation: weight-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes weight-pulse {
+      0%, 100% { font-weight: 800; }
+      50%       { font-weight: 100; }
+    }
+
+    .message {
+      margin-top: 24px;
+      font-size: 16px;
+      color: #000000;
+      line-height: 1.7;
+    }
+
+    .back {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #000000;
+      text-decoration: none;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .back:hover {
+      opacity: 0.4;
+    }
+  </style>
+</head>
+
+<body>
+  <p class="code">404</p>
+  <p class="message">페이지를 찾을 수 없습니다.</p>
+  <a class="back" href="index.html">← 돌아가기</a>
+</body>
+
+</html>

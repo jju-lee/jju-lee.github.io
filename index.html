@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jusung Lee</title>
+  <link rel="icon" type="image/png" href="avatar.png" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    /* ── Reset & Base ── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-surface: #ffffff;
+      --color-border: #e8e8e4;
+      --color-text: #000000;
+      --color-muted: #000000;
+      --color-accent: #2d2d2d;
+      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w: 720px;
+      --section-gap: 96px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: var(--section-gap) 0;
+    }
+
+    section+section {
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-text);
+    }
+
+    /* ── Hero ── */
+    #hero {
+      padding-top: calc(var(--section-gap) + 56px);
+      padding-bottom: var(--section-gap);
+      border-top: none;
+    }
+
+    .hero-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    @keyframes weight-pulse {
+
+      0%,
+      100% {
+        font-weight: 800;
+      }
+
+      50% {
+        font-weight: 100;
+      }
+    }
+
+    .hero-name {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      animation: weight-pulse 3s ease-in-out infinite;
+    }
+
+    .hero-role {
+      font-size: clamp(18px, 3vw, 22px);
+      font-weight: 400;
+      color: var(--color-muted);
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--color-muted);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    /* ── Section Title ── */
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    /* ── About ── */
+    .about-text {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--color-text);
+    }
+
+    .about-text p+p {
+      margin-top: 20px;
+    }
+
+    .about-text ul {
+      list-style: none;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .about-text ul li {
+      display: flex;
+      gap: 12px;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--color-muted);
+    }
+
+    .about-text ul li::before {
+      content: "–";
+      flex-shrink: 0;
+      color: #000000;
+    }
+
+    /* ── Experience ── */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .exp-item:first-child {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .exp-period {
+      font-size: 13px;
+      color: var(--color-muted);
+      padding-top: 3px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .exp-content {}
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .exp-bullets li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--color-muted);
+    }
+
+    .exp-bullets li::before {
+      content: "–";
+      flex-shrink: 0;
+      color: #000000;
+    }
+
+    .exp-company {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .exp-title {
+      font-size: 14px;
+      color: var(--color-muted);
+      margin-bottom: 10px;
+    }
+
+    .exp-desc {
+      font-size: 14px;
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 32px;
+    }
+
+    .skill-group-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 12px;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-item {
+      font-size: 14px;
+      color: var(--color-text);
+    }
+
+    /* ── Contact ── */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--color-border);
+      text-decoration: none;
+      color: var(--color-text);
+      transition: color 0.2s;
+    }
+
+    .contact-item:first-child {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .contact-item:hover {
+      color: var(--color-muted);
+    }
+
+    .contact-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .contact-value {
+      font-size: 15px;
+    }
+
+    .contact-arrow {
+      margin-left: auto;
+      font-size: 18px;
+      opacity: 0.3;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .contact-item:hover .contact-arrow {
+      opacity: 0.7;
+      transform: translateX(4px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--color-muted);
+    }
+
+    .footer-top {
+      font-size: 13px;
+      color: var(--color-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-top:hover {
+      color: var(--color-text);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      :root {
+        --section-gap: 64px;
+      }
+
+      .exp-item {
+        grid-template-columns: 1fr;
+        gap: 6px 0;
+      }
+
+      .exp-period {
+        font-size: 12px;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      footer .container {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a class="nav-logo" href="#hero">
+        <img src="avatar.png" alt="이주성" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="container">
+      <h1 class="hero-name">Jusung Lee</h1>
+      <p class="hero-role">Product Manager</p>
+      <p class="hero-desc">
+        운영의 병목을 구조화하고, 데이터와 현장을 연결해<br />실제 비용 절감과 리드타임 단축을 만들어내는 Product Manager 입니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About</p>
+      <div class="about-text">
+        <p>
+          서비스 운영의 복잡한 문제를 제품과 시스템으로 해결해온 Product Manager 이주성입니다.
+        </p>
+        <ul>
+          <li>운영의 병목이 되는 지점을 구조화하며 리드타임 단축, 비용 손실 개선하여 연간 수억 원 비용 절감을 만들어냈습니다.</li>
+          <li>데이터 분석과 현장 실행을 연결해, 전략이 실제 결과로 이어지도록 만드는 데 강점이 있습니다.</li>
+          <li>아이디어 제안에 적극적으로 참여하며, 사용자 관점에서 최상의 방향으로 기획하는 능력을 가지고 있습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">Experience</p>
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <span class="exp-period">2026.04 — 현재</span>
+          <div class="exp-content">
+            <p class="exp-company">두핸즈(품고)</p>
+            <p class="exp-title">Product Manager</p>
+            <ul class="exp-bullets">
+              <li>품고에어 새벽배송 서비스 기획</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <span class="exp-period">2023.12 — 2026.04</span>
+          <div class="exp-content">
+            <p class="exp-company">잇그린(리턴잇)</p>
+            <p class="exp-title">Product Lead / Product Manager</p>
+            <ul class="exp-bullets">
+              <li>주문반납 관리 시스템 재설계 및 회수 경험 고도화</li>
+              <li>RFID/QR 기반 인벤토리(WMS) 시스템 기획 및 구축</li>
+              <li>가게관리(PRM) 어드민 기획 및 고도화</li>
+              <li>외부 연계 채널 데이터 연동 및 관리</li>
+              <li>서비스 데이터 분석 및 관리 체계 구축</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <span class="exp-period">2021.12 — 2023.11</span>
+          <div class="exp-content">
+            <p class="exp-company">닥터나우</p>
+            <p class="exp-title">Business Management Lead / Data Analyst</p>
+            <ul class="exp-bullets">
+              <li>배송 인프라 재설계 및 월 20억 손실 → 손익 구조 전환</li>
+              <li>영업 운영 체계 구축 및 제휴 확장</li>
+              <li>제휴점 정산/결제 프로세스 개선 및 관리</li>
+              <li>병원찾기 서비스 데이터 분석 및 UX 개선</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <span class="exp-period">2021.06 — 2021.12</span>
+          <div class="exp-content">
+            <p class="exp-company">멋진녀석들</p>
+            <p class="exp-title">Operation Planning Specialist</p>
+            <ul class="exp-bullets">
+              <li>‘배민 1’ 서비스 가맹점 영업 기획 및 관리</li>
+              <li>파트너 영업 지원</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <span class="exp-period">2020.02 — 2021.06</span>
+          <div class="exp-content">
+            <p class="exp-company">딜리버리커넥트</p>
+            <p class="exp-title">Sales Management Specialist</p>
+            <ul class="exp-bullets">
+              <li>영업 채널 관리</li>
+              <li>영업 기획</li>
+              <li>영업지원 (업무 협업툴 구축 및 관리)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <span class="exp-period">2019.02 — 2020.05</span>
+          <div class="exp-content">
+            <p class="exp-company">메쉬코리아(부릉)</p>
+            <p class="exp-title">Local Sales Specialist</p>
+            <ul class="exp-bullets">
+              <li>가맹점(B2C) 영업</li>
+              <li>가맹점 관리 및 해지방어</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">Skills</p>
+      <div class="skills-grid">
+
+        <div>
+          <p class="skill-group-title">Product</p>
+          <div class="skill-items">
+            <span class="skill-item">서비스 기획</span>
+            <span class="skill-item">사용자 리서치</span>
+            <span class="skill-item">데이터 분석</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="skill-group-title">Data</p>
+          <div class="skill-items">
+            <span class="skill-item">SQL (PostgreSQL, MySQL, BigQuery)</span>
+            <span class="skill-item">Redash</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="skill-group-title">Tools</p>
+          <div class="skill-items">
+            <span class="skill-item">Atlassian (JIRA, Confluence)</span>
+            <span class="skill-item">Slack</span>
+            <span class="skill-item">Notion</span>
+            <span class="skill-item">Figma</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Contact</p>
+      <div class="contact-links">
+
+        <a class="contact-item" href="mailto:bb3872@gmail.com">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">jusung.works@gmail.com</span>
+          <span class="contact-arrow">→</span>
+        </a>
+
+        <a class="contact-item" href="https://www.linkedin.com/in/jusung--lee" target="_blank" rel="noopener">
+          <span class="contact-label">Linkedin</span>
+          <span class="contact-value">https://www.linkedin.com/in/jusung--lee</span>
+          <span class="contact-arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <span class="footer-copy">Copyright 2026. Jusung Lee all rights reserved.</span>
+      <a class="footer-top" href="#hero">↑ 맨 위로</a>
+    </div>
+  </footer>
+
+</body>
+
+</html>
