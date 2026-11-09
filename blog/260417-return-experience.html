@@ -17,6 +17,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="../nav.css" />
   <style>
     *,
     *::before,
@@ -53,65 +54,6 @@
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 0 24px;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--color-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--color-text);
-      font-weight: 500;
-    }
-
-    .nav-divider {
-      font-size: 14px;
-      color: var(--color-border);
-      user-select: none;
     }
 
     article {
@@ -252,10 +194,6 @@
         --section-gap: 64px;
       }
 
-      .nav-links {
-        gap: 16px;
-      }
-
       footer .container {
         flex-direction: column;
         gap: 8px;
@@ -272,7 +210,7 @@
       <a class="nav-logo" href="../index.html">
         <img src="../avatar.png" alt="이주성" />
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="../index.html#about">About</a></li>
         <li><a href="../index.html#experience">Experience</a></li>
         <li><a href="../index.html#skills">Skills</a></li>
@@ -280,6 +218,9 @@
         <li class="nav-divider">|</li>
         <li><a href="../blog.html" class="active">Blog</a></li>
       </ul>
+      <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -338,6 +279,8 @@
       <a class="footer-back" href="../blog.html">← 목록으로</a>
     </div>
   </footer>
+
+  <script src="../nav.js"></script>
 
 </body>
 

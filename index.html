@@ -17,6 +17,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="nav.css" />
   <style>
     /* ── Reset & Base ── */
     *,
@@ -50,6 +51,7 @@
       font-size: 16px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
     }
 
     /* ── Layout ── */
@@ -65,63 +67,6 @@
 
     section+section {
       border-top: 1px solid var(--color-border);
-    }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--color-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--color-text);
-    }
-
-    .nav-divider {
-      font-size: 14px;
-      color: var(--color-border);
-      user-select: none;
     }
 
     /* ── Hero ── */
@@ -363,6 +308,8 @@
 
     .contact-value {
       font-size: 15px;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
     .contact-arrow {
@@ -420,8 +367,12 @@
         font-size: 12px;
       }
 
-      .nav-links {
-        gap: 16px;
+      .contact-item {
+        gap: 12px;
+      }
+
+      .contact-label {
+        width: 72px;
       }
 
       footer .container {
@@ -441,7 +392,7 @@
       <a class="nav-logo" href="#hero">
         <img src="avatar.png" alt="이주성" />
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -449,6 +400,9 @@
         <li class="nav-divider">|</li>
         <li><a href="blog.html">Blog</a></li>
       </ul>
+      <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -647,6 +601,8 @@
       <a class="footer-top" href="#hero">↑ 맨 위로</a>
     </div>
   </footer>
+
+  <script src="nav.js"></script>
 
 </body>
 

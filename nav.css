@@ -1,0 +1,177 @@
+/* 공통 Nav 스타일 — index.html, blog.html, blog/*.html 에서 함께 사용 */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border, #e8e8e4);
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  position: relative;
+  padding: 4px 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-muted, #000);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--color-text, #000);
+}
+
+/* 현재 위치 표시: 글자색이 모두 검정이라 굵기 + 밑줄로 구분 */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-text, #000);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav-links a.active {
+  font-weight: 600;
+}
+
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+.nav-divider {
+  font-size: 14px;
+  color: var(--color-border, #e8e8e4);
+  user-select: none;
+}
+
+/* 모바일 메뉴 토글 (데스크톱에서는 숨김) */
+.nav-toggle {
+  display: none;
+  flex-shrink: 0;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-toggle span {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: var(--color-text, #000);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.nav-toggle span:nth-child(1) {
+  top: 14px;
+}
+
+.nav-toggle span:nth-child(2) {
+  top: 19px;
+}
+
+.nav-toggle span:nth-child(3) {
+  top: 24px;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+@media (max-width: 600px) {
+  .nav-toggle {
+    display: block;
+    margin-right: -10px;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 8px 24px 16px;
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid var(--color-border, #e8e8e4);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: inline-block;
+    padding: 12px 0;
+    font-size: 16px;
+  }
+
+  .nav-links a::after {
+    bottom: 8px;
+  }
+
+  .nav-divider {
+    display: none;
+  }
+
+  .nav-links li:last-child {
+    margin-top: 4px;
+    border-top: 1px solid var(--color-border, #e8e8e4);
+  }
+}
